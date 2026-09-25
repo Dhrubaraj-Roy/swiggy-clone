@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import FDFRestaurentCard from "./FDFRestaurentCard"
-
+import Shimmer from "./Shimmer";
 export default function FDFRestaurentOptions(){
 
 
@@ -15,10 +15,11 @@ export default function FDFRestaurentOptions(){
         }
         fetchData();
     },[])
+    if(restData.length==0)
+        return <Shimmer></Shimmer>
     return (
         <div className="flex flex-wrap w-[80%] mx-auto mt-20 gap-5">
             {restData.map((res)=>(<FDFRestaurentCard key={res?.info?.id} res={res}></FDFRestaurentCard>))}
         </div>
-        
     )
 }
