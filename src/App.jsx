@@ -1,16 +1,19 @@
-import FoodOptions from "./Component/FoodOptions"
-import Header from "./Component/Header"
-import GroceryOptions from "./Component/GroceryOptions"
-import RestaurantOptions from "./Component/RestaurantOptions"
+import Home from "./Component/Home"
+import FDFRestaurentOptions from "./Component/FDFRestaurentOptions"
+import {Routes,Route,BrowserRouter} from "react-router"
+
 
 function App() {
 
   return (
     <>
-      <Header></Header>
-      <FoodOptions></FoodOptions>
-      <GroceryOptions></GroceryOptions>
-      <RestaurantOptions/>
+     <BrowserRouter>
+     <Routes>
+      <Route path="/" element={<Home></Home>}></Route>
+      <Route path="/restaurent" element={<FDFRestaurentOptions></FDFRestaurentOptions>}></Route>
+      </Routes>
+      </BrowserRouter>
+      
     </>
   )
 }
