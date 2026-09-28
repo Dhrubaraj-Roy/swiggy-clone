@@ -3,7 +3,22 @@ import {useState} from 'react';
 
 export default function RestMenuCard({ menuIteam }) {
     const itemCards = menuIteam?.card?.card?.itemCards || [];
-    const [isOpen, setIsOpen] = useState(true)
+    const [isOpen, setIsOpen] = useState(true);
+    const [filter, setFilter] = useState('all');
+
+
+
+
+
+
+
+
+    //filter iteams based on the selected filter
+    const filterItems = itemCards.filter((iteam) => {
+        if (filter === 'veg') return iteam?.card?.info?.isVeg === 1;
+        if (filter === 'nonveg') return !iteam?.card?.info?.isVeg;
+        return true;
+    });
 
 
       if(!isOpen){
@@ -22,11 +37,24 @@ export default function RestMenuCard({ menuIteam }) {
             <p className="text-3xl font-bold">{menuIteam?.card?.card?.title}</p>
              <button className="absolute  top-0 text-gray-500 right-90 text-2xl " onClick={()=>setIsOpen(!isOpen)}>{isOpen?'⌃':'⌄'}</button>
              
-            
+             <div className="flex gap-3 my-3">
+                <button className={`px-3 py-1 border rounded-full text-sm font-semibold transition ${filter === 'veg' ? 'bg-green-700 text-white' : 'bg-white text-green-700 border-green-700'}`}
+                    onClick={() => setFilter(filter === 'veg' ? 'all' : 'veg')}
+                >
+                    🟢 Veg
+                </button>
+                <button
+                    className={`px-3 py-1 border rounded-full text-sm font-semibold transition ${filter === 'nonveg' ? 'bg-red-700 text-white' : 'bg-white text-red-700 border-red-700'}`}
+                    onClick={() => setFilter(filter === 'nonveg' ? 'all' : 'nonveg')}
+                >
+                    🔴 Non-Veg
+                </button>
+            </div>
+
             
 
             <div>
-                {itemCards.map((item) => {
+                {filterItems.map((item) => {
                     const info = item?.card?.info;
                     return (
                         <div key={info?.id || info?.name} className="my-2  mt-5">
