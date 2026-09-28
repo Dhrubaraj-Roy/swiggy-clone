@@ -1,0 +1,1 @@
+//This is the small recommended card is restinfo of negi
