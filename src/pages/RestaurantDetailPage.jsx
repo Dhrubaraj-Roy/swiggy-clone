@@ -3,23 +3,30 @@ import { useParams } from "react-router";
 import { PROXY_SERVER_URL, getRestaurantMenuUrl } from "../services/swiggyApi";
 import RestaurantMenuCategory from "../components/restaurant/RestaurantMenuCategory";
 import RestaurantMenuShimmer from "../components/shimmers/RestaurantMenuShimmer";
+import { useDispatch, useSelector } from "react-redux";
+import {addRestaurantMenu} from "../store/restaurantSlice";
+
+
 
 export default function RestaurantDetailPage() {
     const { id } = useParams();
-    const [restaurantData, setRestaurantData] = useState(null);
+    const restaurantData = useSelector((state)=> state.restaurant.menus[id] )
+    const dispatch = useDispatch();
 
     useEffect(() => {
+        if (!restaurantData){
         async function fetchMenu() {
             try {
                 const response = await fetch(PROXY_SERVER_URL + getRestaurantMenuUrl(id));
                 const data = await response.json();
-                setRestaurantData(data);
+                dispatch(addRestaurantMenu({id, data}));
             } catch (error) {
                 console.error("Failed to fetch menu:", error);
             }
         }
         fetchMenu();
-    }, [id]);
+    }
+    }, [id, restaurantData, dispatch]);
 
     if (!restaurantData) {
         return <RestaurantMenuShimmer />;

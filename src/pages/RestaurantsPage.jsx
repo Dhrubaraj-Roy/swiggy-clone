@@ -30,7 +30,7 @@ export default function RestaurantsPage() {
     }
 
     return (
-        <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="max-w-7xl mx-auto px-6  py-8">
             <h1 className="text-2xl font-bold mb-6 text-gray-800">
                 Restaurants with online food delivery in Delhi
             </h1>
