@@ -5,6 +5,7 @@ import FetchRestaurent from "./Component/FetchRestaurentHeader"
 import Head from "./Component/Head"
 import { Provider } from "react-redux"
 import { store } from "./Store/Stores"
+import Checkout from "./Component/Checkout"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <Route element={<Head></Head>}>
       <Route path="/restaurent" element={<FDFRestaurentOptions></FDFRestaurentOptions>}></Route>
       <Route path="/city/delhi/:id" element={<FetchRestaurent></FetchRestaurent>}></Route>
+      <Route path="/checkout" element={<Checkout></Checkout>}></Route>
       </Route>
       </Routes>
       </BrowserRouter>
