@@ -1,6 +1,6 @@
-export default function GroceryCard({ food }) {
+export default function FoodCard({ food }) {
     return (
-        <div className="w-36 shrink-0 cursor-pointer hover:scale-105 transition-transform duration-200">
+        <div className="w-36 flex-shrink-0 cursor-pointer hover:scale-105 transition-transform duration-200">
             <a href={food?.action?.link || "#"}>
                 <img 
                     className="w-full h-auto object-cover" 
@@ -8,8 +8,6 @@ export default function GroceryCard({ food }) {
                     alt={food?.accessibility?.altText || "food item"} 
                 />
             </a>
-        
-            <h3 className="font-semibold mt-2 text-xl text-center">{food?.action?.text}</h3>
         </div>
-    )
+    );
 }
