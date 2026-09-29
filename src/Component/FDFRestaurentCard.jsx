@@ -44,7 +44,7 @@ export default function FDFRestaurentCard({res}){
             </div>
             <span className=" block truncate text-gray-600 text-sm">{res?.info?.cuisines}</span>
             <span className=" block truncate text-gray-600 text-sm">{res?.info?.areaName}</span>
-            
+             
             </div>
             
         </div>
